@@ -95,6 +95,8 @@ You can use
 
     `docker run camunda/zeebe-lambda-worker`
 
+Set environment variables as described below to configure the worker
+
 ## Readiness probes
 
 You can check health of the worker:
@@ -103,7 +105,7 @@ You can check health of the worker:
 
 This uses the Spring Actuator, so other metrics are available as well
 
-## Configuration of Zeebe Connection
+# Configuration via Environment Variables
 
 The connection to the broker Zeebe can be changed by setting the environment variables 
 
@@ -117,7 +119,13 @@ or if you want to connect to Camunda Cloud:
 * `ZEEBE_CLIENT_CLOUD_CLIENTID`
 * `ZEEBE_CLIENT_CLOUD_CLIENTSECRET`
 
-And you could adjust the topic or worker name itself:
+You also need to specify the AWS credentials to talk to your Lambda:
+
+* `AWS_ACCESSKEY`
+* `AWS_SECRET`
+* `AWS_REGION`
+
+You could adjust the topic or worker name itself (if you know what you are doing - leave untouched otherwise)
 
 * `ZEEBE_CLIENT_WORKER_DEFAULTNAME` (default `lambda-worker`)
 * `ZEEBE_CLIENT_WORKER_DEFAULTTYPE` (default `lambda`)
@@ -125,7 +133,7 @@ And you could adjust the topic or worker name itself:
 
 This worker uses [Spring Zeebe]( https://github.com/zeebe-io/spring-zeebe/) underneath, so all configuration options available there are also available here.
 
-## Configuration Variables from URL
+# Configuration Variables from URL
 
 You can load additional configuration values used to substitute placeholders. Therefor the worker will query an HTTP endpoint and expects a JSON back:
 
@@ -152,7 +160,7 @@ To load additional config variables from an URL set these environment variables:
 * `ENV_VARS_M2M_AUDIENCE`
 
 
-## Code of Conduct
+# Code of Conduct
 
 This project adheres to the Contributor Covenant [Code of
 Conduct](/CODE_OF_CONDUCT.md). By participating, you are expected to uphold
