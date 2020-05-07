@@ -84,7 +84,7 @@ public class LambdaJobHandler implements JobHandler {
     } catch (Throwable e) {
       
       String functionErrorCode = getFunctionErrorCode(configMaps);      
-      if (e instanceof LambdaInvocationError && functionErrorCode!=null) { 
+      if (functionErrorCode!=null && e instanceof LambdaInvocationError) { 
         
         // The function returned an error, 
         // and the function error code is configured in the workflow model
