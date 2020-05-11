@@ -95,7 +95,32 @@ You can use
 
     `docker run camunda/zeebe-lambda-worker`
 
-Set environment variables as described below to configure the worker
+Set environment variables as described below to configure the worker. So for example to connect to Camunda Cloud and AWS it could look like this:
+
+```
+docker run -e ZEEBE_CLIENT_CLOUD_CLUSTERID=x -e ZEEBE_CLIENT_CLOUD_CLIENTID=y -e ZEEBE_CLIENT_CLOUD_CLIENTSECRET=z -e AWS_ACCESSKEY=a -e AWS_SECRET=b -e AWS_REGION=c -p 8080:8080 camunda/zeebe-lambda-worker:SNAPSHOT
+```
+
+Or even easier using environment files:
+
+
+```
+docker run --env-file camunda.env --env-file aws.env -p 8080:8080 camunda/zeebe-lambda-worker:SNAPSHOT
+```
+with camunda.env:
+```
+ZEEBE_CLIENT_CLOUD_CLUSTERID=x
+ZEEBE_CLIENT_CLOUD_CLIENTID=y
+ZEEBE_CLIENT_CLOUD_CLIENTSECRET=z
+```
+and aws.env:
+```
+AWS_REGION=eu-central-1
+AWS_ACCESSKEY=x
+AWS_SECRET=y
+```
+
+Of course you can also services like AWS Fargate to run this container.
 
 ## Readiness probes
 
