@@ -14,6 +14,10 @@ A Zeebe worker to invoke AWS Lambdas (Serverless functions), allowing to orchest
 
 Example service task in BPMN:
 
+![bpmn.png](bpmn.png)
+
+Or in the BPMN XML:
+
 ```xml
 <bpmn:serviceTask id="BookHotel" name="Book Hotel">
   <bpmn:extensionElements>
