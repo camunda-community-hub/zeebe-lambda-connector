@@ -23,6 +23,9 @@
 hs_err_pid*
 /target/
 
+# sensitive credentials
+/src/main/resources/application.properties
+
 # intellij generated
 /.idea/
 /zeebe-lambda-worker.iml

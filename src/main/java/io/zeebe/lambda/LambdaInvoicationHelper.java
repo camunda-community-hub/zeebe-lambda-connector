@@ -18,42 +18,32 @@ import com.amazonaws.services.lambda.model.InvokeResult;
 @Component
 public class LambdaInvoicationHelper {
 
-  private final Logger logger = LoggerFactory.getLogger(LambdaInvoicationHelper.class);
+    private final Logger logger = LoggerFactory.getLogger(LambdaInvoicationHelper.class);
 
-  @Autowired
-  private AwsConfig awsConfig;
+    @Autowired
+    private AWSLambda lambdaClient;
 
-  public String invokeFunction(String functionName, String payloadAsJson) {
-    AWSLambda lambdaClient = buildAwsLambdaClient();
-    
-    InvokeRequest req = new InvokeRequest() //
-        .withFunctionName(functionName) //
-        .withPayload(payloadAsJson);
-    
-    InvokeResult requestResult = lambdaClient.invoke(req);
+    public String invokeFunction(String functionName, String payloadAsJson) {
 
-    String result = null;
-    if (requestResult.getPayload() != null) {
-      result = StandardCharsets.UTF_8.decode(requestResult.getPayload()).toString();
+        InvokeRequest req = new InvokeRequest() //
+                .withFunctionName(functionName) //
+                .withPayload(payloadAsJson);
+
+        InvokeResult requestResult = lambdaClient.invoke(req);
+
+        String result = null;
+        if (requestResult.getPayload() != null) {
+            result = StandardCharsets.UTF_8.decode(requestResult.getPayload()).toString();
+        }
+
+        if (requestResult.getFunctionError() != null) {
+            logger.info("Failure invoking Lambda '" + functionName + "': '" + requestResult.getFunctionError() + "': " + result);
+            throw new LambdaInvocationError("Failure invoking Lambda '" + functionName + "':" + requestResult.getFunctionError() + "': " + result);
+        } else {
+            logger.info("Result of Lambda '" + functionName + "': " + result);
+            return result;
+        }
     }
-    
-    if (requestResult.getFunctionError()!=null) {
-      logger.info("Failure invoking Lambda '"+functionName+"': '" + requestResult.getFunctionError()+ "': " + result);
-      throw new LambdaInvocationError("Failure invoking Lambda '"+functionName+"':" + requestResult.getFunctionError()+ "': " + result);
-    } else {    
-      logger.info("Result of Lambda '"+functionName+"': " + result);
-      return result;
-    }
-  }
 
-  private AWSLambda buildAwsLambdaClient() {
-    // TODO: use data from Resource String?
-    // arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:${self:service}-${opt:stage}-book-hotel
-    Regions region = Regions.fromName(awsConfig.getAwsRegionName());
-    BasicAWSCredentials credentials = new BasicAWSCredentials(awsConfig.getAwsAccessKey(), awsConfig.getAwsSecretAccessKey());
-    AWSLambdaClientBuilder builder = AWSLambdaClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(region);
-    AWSLambda client = builder.build();
-    return client;
-  }
 
 }
