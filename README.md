@@ -78,7 +78,7 @@ Example:
 You can use
 
 * Single Variables by name
-* `variables` uses all variable as Json object
+* `variablesJson` uses all variable as Json object
 * `variablesJsonEscaped` includes all variables as Json String, escaped, to be used as String attribute, e.g. used to call a function that is also called via API Gateway) - use {{{ to prevent the templating to add quotes:
 
 ```
