@@ -92,7 +92,10 @@ You can use
 
 ## JAR 
 
-* Download the [JAR file](https://github.com/zeebe-io/zeebe-http-worker/releases) 
+* Build the JAR file 
+
+    `mvn clean build`
+
 * Execute the JAR via
 
     `java -jar target/zeebe-lambda-worker-{VERSION}.jar`
