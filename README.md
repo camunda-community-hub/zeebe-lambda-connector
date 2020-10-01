@@ -99,7 +99,7 @@ You can use
 
 ## Docker
 
-    `docker run camunda/zeebe-lambda-worker`
+    docker run camunda/zeebe-lambda-worker:SNAPSHOT
 
 Set environment variables as described below to configure the worker. So for example to connect to Camunda Cloud and AWS it could look like this:
 
