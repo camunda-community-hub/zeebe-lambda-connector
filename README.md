@@ -78,7 +78,7 @@ Example:
 You can use
 
 * Single Variables by name
-* `variables` uses all variable as Json object
+* `variablesJson` uses all variable as Json object
 * `variablesJsonEscaped` includes all variables as Json String, escaped, to be used as String attribute, e.g. used to call a function that is also called via API Gateway) - use {{{ to prevent the templating to add quotes:
 
 ```
@@ -92,14 +92,17 @@ You can use
 
 ## JAR 
 
-* Download the [JAR file](https://github.com/zeebe-io/zeebe-http-worker/releases) 
+* Build the JAR file 
+
+    `mvn clean build`
+
 * Execute the JAR via
 
     `java -jar target/zeebe-lambda-worker-{VERSION}.jar`
 
 ## Docker
 
-    `docker run camunda/zeebe-lambda-worker`
+    docker run camunda/zeebe-lambda-worker:SNAPSHOT
 
 Set environment variables as described below to configure the worker. So for example to connect to Camunda Cloud and AWS it could look like this:
 
