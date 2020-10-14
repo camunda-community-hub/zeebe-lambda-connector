@@ -4,7 +4,7 @@ A Zeebe worker to invoke AWS Lambdas (Serverless functions), allowing to orchest
 
 > Requirements: Java 11
 
-**Important Note:** This is a community extension and does not give you any gurantees. In fact, it was developed as part of a POC and might not be ready for production usage yet.
+**Important Note:** This is a community extension and does not give you any guarantees. In fact, it was developed as part of a POC and might not be ready for production usage yet.
 
 ![overview.png](overview.png)
 
