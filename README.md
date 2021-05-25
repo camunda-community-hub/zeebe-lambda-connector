@@ -1,6 +1,6 @@
-# zeebe-lambda-worker
+#zeebe-lambda-connector
 
-A Zeebe worker to invoke AWS Lambdas (Serverless functions), allowing to orchestrate functions. It uses the AWS SDK to connect to Lambda.
+A Zeebe connector to invoke AWS Lambdas (Serverless functions), allowing to orchestrate functions. It uses the AWS SDK to connect to Lambda.
 
 > Requirements: Java 11
 
