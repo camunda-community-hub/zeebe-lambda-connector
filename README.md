@@ -1,9 +1,9 @@
 [![Community Extension](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
 [![Lifecycle: Proof of Concept](https://img.shields.io/badge/Lifecycle-Proof%20of%20Concept-blueviolet)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#proof-of-concept-)
 
-# zeebe-lambda-worker
+# zeebe-lambda-connector
 
-A Zeebe worker to invoke AWS Lambdas (Serverless functions), allowing to orchestrate functions. It uses the AWS SDK to connect to Lambda.
+A Zeebe connector to invoke AWS Lambdas (Serverless functions), allowing to orchestrate functions. It uses the AWS SDK to connect to Lambda.
 
 > Requirements: Java 11
 

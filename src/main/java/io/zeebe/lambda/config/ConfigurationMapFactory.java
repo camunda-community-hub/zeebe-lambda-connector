@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.io.JsonStringEncoder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.zeebe.client.api.response.ActivatedJob;
+import io.camunda.zeebe.client.api.response.ActivatedJob;
 import io.zeebe.lambda.LambdaInvoicationHelper;
 
 /**
@@ -53,7 +53,7 @@ public class ConfigurationMapFactory {
     config.putAll(environmentVariableProvider.getVariables());
 
     config.put("jobKey", job.getKey());
-    config.put("workflowInstanceKey", job.getWorkflowInstanceKey());
+    config.put("processInstanceKey", job.getProcessInstanceKey());
 
     try {      
       String jsonString = objectMapper.writeValueAsString(variables);
