@@ -17,7 +17,7 @@
 
     <properties>
         <version.zeebe.spring>1.0.0</version.zeebe.spring>
-        <version.spring.boot>2.2.5.RELEASE</version.spring.boot>
+        <version.spring.boot>3.2.0</version.spring.boot>
 
         <!-- release parent settings -->
         <version.java>11</version.java>
